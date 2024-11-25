@@ -65,7 +65,7 @@
     
     function toDoStep() {
       const {qntyinishedAndDiedUsers} = stUsers.checkIsAllDeadOrFinished();
-      console.log(qntyinishedAndDiedUsers)
+
       if(qntyinishedAndDiedUsers <= 0) {
         isDisableButton = false;
         

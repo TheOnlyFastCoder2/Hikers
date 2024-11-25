@@ -72,7 +72,7 @@ export const cbUserActions:Record<ERoles, (props:TProps) => void|TCBAction > = {
           apponent.HP = decrement(apponent.HP, value);
           cb(user, ERoles.BOW, 'qntyInventory');
           cbDamageEffect!();
-          cbUserActions.MONEY({user, step:20});
+          cbUserActions.MONEY({user, step:10});
         }
       }
   },
@@ -89,7 +89,7 @@ export const cbUserActions:Record<ERoles, (props:TProps) => void|TCBAction > = {
       const {value, rangeSteps} = DataOfRoles.SWORD;
       if(Math.abs(apponent.indCell - user.indCell) <= rangeSteps) {
         apponent.HP = decrement(apponent.HP, value);
-        cbUserActions.MONEY({user, step:25});
+        cbUserActions.MONEY({user, step:15});
       
         cbDamageEffect!();
         cb(user, ERoles.SWORD, 'qntyInventory');
@@ -128,7 +128,7 @@ export const cbUserActions:Record<ERoles, (props:TProps) => void|TCBAction > = {
             apponent.HP = decrement(apponent.HP, value);
             dataApponent.isShow = false;     
             cbDamageEffect();
-            cbUserActions.MONEY({user, step:15});
+            cbUserActions.MONEY({user, step:6});
             cb(apponent, ERoles.POISON, 'qntyBuffs');
           } else if (dataApponent.qntyBuffs <= 0) {
             dataUser.apponents.splice(savedIndex, 1);
@@ -268,7 +268,7 @@ export default (user: CUser, cell:CEnity, currStep:number, timeID: NodeJS.Timeou
      user.actions.POTION?.cb !== undefined && user.actions.POTION.cb();
       stUsers.getUsers().forEach((apponent) => {
         if( cell.index === apponent.indCell ) {
-          cbUserActions.MONEY({user,step:10});
+          cbUserActions.MONEY({user,step:5});
         }
       });
 

@@ -25,7 +25,7 @@
     isDamage = false;
     if( cell.HP <= 0  && user) {
       cell.isDied = true;
-      user.money += 70;
+      user.money += 20;
       stUsers.reload();
       
       const {isAllDeads} = stUsers.checkIsAllDeadOrFinished()
