@@ -1,0 +1,98 @@
+@font-face {
+  font-family: 'Epilepsy Sans';
+  src: url("./assets/fonts/EpilepsySans.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Epilepsy Sans';
+  src: url("./assets/fonts/EpilepsySansBold.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+:root {
+  --rounded-sm: 2px;
+  --rounded-md: 4px;
+  --rounded-lg: 6px;
+
+  --dark-100: 166, 171, 239;
+  --dark-200: 83, 83, 110;
+  --dark-300: 64, 64, 81;
+  --dark-400: 37, 37, 43;
+  --dark-bg: 43, 42, 49;
+
+  --dark-button: 117, 120, 163;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Epilepsy Sans", sans-serif;
+  font-weight: bold;
+  cursor:url("./assets/sprites/cursor.png");
+}
+
+div {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  
+  &::-webkit-scrollbar { /* chrome based */
+    width: 0;  /* ширина scrollbar'a */
+    height: 0;
+    background: transparent;  /* опционально */
+  }
+}
+
+body,html {
+  overflow: hidden;
+  
+
+}
+#app {
+  width: 100vw;
+  height: 100vh;
+  
+  font-style: normal;
+  font-size: 16px;
+}
+
+button,input {
+  background: none;
+  border:none;
+  outline: none;
+  cursor: pointer;
+  height: fit-content;
+  font-weight: 900;
+}
+
+.Store {
+  .product {
+    &_panel_btn:active {
+      path, rect {
+        fill: rgb(var(--dark-400)) !important;
+      }
+    }
+  }
+}
+
+
+.button {
+  display:block;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: rgb(var(--dark-100), 0.3);
+  border-radius: var(--rounded-sm);
+  border: 1px solid rgb(var(--dark-300));
+  background-color: rgb(var(--dark-400));
+  transition: 0.2s ease;
+  box-shadow: 0 0 0 rgb(var(--dark-400));
+  
+  &:hover, &.active {
+    color: rgb(var(--dark-400));
+    background-color: rgb(var(--dark-button)); 
+  }
+}
