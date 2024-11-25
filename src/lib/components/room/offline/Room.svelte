@@ -96,7 +96,7 @@
     }
 
     function start(map:Einity[]) {
-      if(users.length > 0) {
+      if(users.length > 1) {
         users.forEach((user) => {
           user.isMe = false;
           user.setPosition(

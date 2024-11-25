@@ -109,7 +109,7 @@
     width={400}
     height={150}
     topic={"⚠️ Предупреждение"}
-    description={"Создайте пожалуйста персонажа :)"}
+    description={"Создайте пожалуйста несколько персонажей :)"}
     bind:this={notification}
   />
   <div class="StoreOfMap">
