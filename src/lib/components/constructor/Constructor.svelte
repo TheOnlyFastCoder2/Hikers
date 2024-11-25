@@ -15,6 +15,7 @@
   let cells:CEnity[];
   let scene:Scene;
   let notification:Notification;
+  let cheatSheet:Notification;
   let storeOfRoles: StoreOfRoles;
   let storeOfMap: StoreOfMap;
   let saverMap: SaverMap;
@@ -51,6 +52,19 @@
 
 <div class="Constructor">
   <Notification 
+  bind:this={cheatSheet}
+  width={700}
+  height={200 }
+  topic={"📝 Шпаргалка"}
+  description={`
+    Навведись на клетку: \n
+    | ShiftLeft+mouseLeftButton: создать клетку \n
+    | CtrlLeft+mouseLeftButton: удалить клетку \n
+    | AltLeft+mouseLeftButton: удалить все клетки до нужной \n
+  `}
+  />
+
+  <Notification 
     bind:this={notification}
     width={400}
     height={150}
@@ -76,6 +90,7 @@
   <div class="Constructor_panel">
     <button class="Constructor_panel_btn" on:click={() => storeOfMap.toOpen()}>выбрать карту</button>
     <button class="Constructor_panel_btn" on:click={() => saverMap.toOpen()}>сохранить карту</button>
+    
     <Linker bind:this={linkerToHome} to="START" justify="END" align='CENTER' onclick={() => {
       const keyMap = stCells.getNameMap();
       if(counterChangedOfMap > 0 || (keyMap === undefined && cells.length > 1) ) {
@@ -86,6 +101,7 @@
     }}>
       <button class="Constructor_panel_btn linker">в меню</button>
     </Linker>
+    <button class="Constructor_panel_btn __cheatsheet" on:click={() => cheatSheet.toOpen()}>подсказка</button>
   </div>
 </div>
 
@@ -107,6 +123,7 @@
       background-color: rgba(var(--dark-300));
       box-shadow: 0 -5px 20px rgba(39, 39, 39, 0.8);
 
+
       &_btn, .Linker  {
         // width: 100%;
         text-align: center;
@@ -127,6 +144,11 @@
           box-shadow: -5px -10px rgb(var(--dark-bg));
           background-color: rgba(var(--dark-200));
         }
+      }
+
+      
+      &_btn.__cheatsheet {
+        background-color: rgba(var(--dark-100),0.4);
       }
     }
   }

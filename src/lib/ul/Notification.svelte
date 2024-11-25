@@ -63,6 +63,8 @@
 
       p {
         text-wrap: balance;
+        white-space: pre-line;
+        line-height: 12px;
       }
     }
 

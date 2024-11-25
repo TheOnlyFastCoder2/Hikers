@@ -152,8 +152,6 @@
           filter:  contrast(2) invert(1);
         }
       }
-
-      
     }
 
     &.__lowerPanel {
