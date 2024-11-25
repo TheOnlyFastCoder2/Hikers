@@ -70,7 +70,7 @@
         isDisableButton = false;
         
       } else {
-        const qntySteps = getRandomDigit(1, 2);
+        const qntySteps = getRandomDigit(1, 6);
         isDisableButton = true;
         stUsers.toDoStep(
           map,
