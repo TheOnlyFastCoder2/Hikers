@@ -6,6 +6,7 @@
 shiftLeft+mouseLeftButton: создать клетку
 CtrlLeft+mouseLeftButton: удалить клетку
 AltLeft+mouseLeftButton: удалить все клетки до нужно
+MouseLeft_DoubleClick: при клике на клетку откроется инвентарь 
 ```
 
 <ol>
