@@ -1,6 +1,7 @@
 # Svelte + TypeScript + Vite
 #### website: https://hikers-bay.vercel.app/
 ###### video: https://disk.yandex.ru/i/AideJuDcLOB5Jg
+###### map: https://disk.yandex.ru/d/o6s72EUwudpdyA
 ```
 В конструкторе навведись на клетку: 
 shiftLeft+mouseLeftButton: создать клетку
