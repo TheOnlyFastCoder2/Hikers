@@ -5,6 +5,7 @@
   export let width:number;
   export let height:number;
   export let description:string;
+  export let lineHeight: string = "20px";
   export let buttons:Array<[Function, string]>|undefined = undefined;
 
   let win: DraggableWin;
@@ -32,7 +33,7 @@
   topic={topic}>
   <div class="Notification {buttons === undefined ? "__noButtons" : ""}">
     <div class="wrapper">
-      <p>{description}</p>
+      <p style={`line-height:${lineHeight}`}>{description}</p>
       {#if buttons}
         <div class="Notification_panel">
           {#each buttons as [cb, text]}
@@ -64,7 +65,6 @@
       p {
         text-wrap: balance;
         white-space: pre-line;
-        line-height: 12px;
       }
     }
 

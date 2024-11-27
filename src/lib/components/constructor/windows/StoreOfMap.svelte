@@ -9,11 +9,17 @@
   let win: DraggableWin;
   let listOfMap: [string, any][] = [];
   let notification: Notification;
+  let files: FileList|null = null;
 
   export let isConstructor:boolean = true;
   export let toCreateNewMap:Function|undefined = undefined;
   export let cbResetCounter: Function|undefined = undefined;
   export let cbToLaodMap: ((map:CEnity[]) => boolean) | undefined = undefined;
+
+  $: console.log(files)
+  $: if (files !== null && files.length > 0) {
+    toUploadFile(files[0])
+  }
 
   export function toOpen () {
     win.toOpenWin();
@@ -34,35 +40,36 @@
         win?.toCloseWin();
     }
 
+
     if(cbToLaodMap === undefined) toLoad(); 
     else {
       const map = stCells.getDencryptMap(value);
       const trigger = cbToLaodMap(map);
-    
-      trigger
-      ? toLoad()
-      : notification.toOpen()
+
+      if(trigger) toLoad()
+      else {
+        files = null;
+        notification.toOpen()
+      }
     }
   }
 
-  function toUploadFile(input:Event & { currentTarget: HTMLInputElement }) {
-    if(input.currentTarget.files) {
-      const [file] = input.currentTarget.files;
-      const name = file.name.replace(/\.txt$/, '');
-      const reader = new FileReader();
+  function toUploadFile(file:File) {
+    const name = file.name.replace(/\.txt$/, '');
+    const reader = new FileReader();
 
-      reader.onload = (e) => {
-        if(e.target?.result)
-          toLaodMap(name, e.target.result as string, true)
-      }
-
-      reader.onerror = (e) => {
-        console.error("Ошибка при чтении файла:", e);
-      }
-
-      reader.readAsText(file);
+    reader.onload = (e) => {
+      if(e.target?.result) {
+        files = null;
+        toLaodMap(name, e.target.result as string, true);
+      }  
     }
 
+    reader.onerror = (e) => {
+      console.error("Ошибка при чтении файла:", e);
+    }
+
+    reader.readAsText(file);
   } 
 
   function toRemoveMap(keyMap:string, index:number) {
@@ -76,6 +83,14 @@
     listOfMap = [...Object.entries(localStorage)];
   }
 
+  function toFormattedMap(keyMap: string) {
+    return keyMap.replace(/^\#H_/, '');
+  }
+
+  function isMap(keyMap: string) {
+    return /^\#H_/.test(keyMap);
+  }
+
   onMount(() => {
     setListOfMap();
   });
@@ -87,19 +102,23 @@
         <div class="StoreOfMap_menu">
             <button class="StoreOfMap_menu_btn file">
               <label for="inputUploader">загрузить c компьютера</label>
-              <input on:change={(ev) => toUploadFile(ev)} id="inputUploader" type="file">
+              {#if files == null}
+                <input bind:files={files} id="inputUploader" type="file">
+              {/if}
             </button>
             <button class="StoreOfMap_menu_btn" on:click={() => toCreateNewMap && toCreateNewMap()}>новая карта</button>
         </div>
         <div class="StoreOfMap_saved">
           {#each listOfMap as [key, value], index }
-            <div class="StoreOfMap_saved_map">
-              <span>{key}</span>
-              <div class="container">
-                  <button on:click={() => toLaodMap(key, value)} class="StoreOfMap_saved_map_btn">открыть</button>
-                  <button on:click={() => toRemoveMap(key, index)} class="StoreOfMap_saved_map_btn">удалить</button>
+            {#if isMap(key)}
+              <div class="StoreOfMap_saved_map">
+                <span>{toFormattedMap(key)}</span>
+                <div class="container">
+                    <button on:click={() => toLaodMap(key, value)} class="StoreOfMap_saved_map_btn">открыть</button>
+                    <button on:click={() => toRemoveMap(key, index)} class="StoreOfMap_saved_map_btn">удалить</button>
+                </div>
               </div>
-            </div>
+            {/if}
           {/each}
         </div>
     </div>
@@ -116,17 +135,21 @@
     <div class="StoreOfMap_menu">
         <button class="StoreOfMap_menu_btn file">
             <label for="inputUploader">загрузить c компьютера</label>
-            <input on:change={(ev) => toUploadFile(ev)} id="inputUploader" type="file">
+            {#if files == null}
+                <input bind:files={files} id="inputUploader" type="file">
+            {/if}
           </button>
     </div>
     <div class="StoreOfMap_saved">
       {#each listOfMap as [key, value], index }
-        <div class="StoreOfMap_saved_map">
-          <span>{key}</span>
-          <div class="container">
-              <button on:click={() => toLaodMap(key, value)} class="StoreOfMap_saved_map_btn">открыть</button>
+        {#if isMap(key)}
+          <div class="StoreOfMap_saved_map">
+            <span>{toFormattedMap(key)}</span>
+            <div class="container">
+                <button on:click={() => toLaodMap(key, value)} class="StoreOfMap_saved_map_btn">открыть</button>
+            </div>
           </div>
-        </div>
+        {/if}
       {/each}
     </div>
   </div>

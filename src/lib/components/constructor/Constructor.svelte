@@ -54,7 +54,8 @@
   <Notification 
   bind:this={cheatSheet}
   width={700}
-  height={200 }
+  height={200}
+  lineHeight="12px"
   topic={"📝 Шпаргалка"}
   description={`
     Навведись на клетку: \n

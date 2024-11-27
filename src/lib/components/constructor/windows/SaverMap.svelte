@@ -44,7 +44,7 @@
 
         try {
           stCells.setNameMap({name: keyMap, isComputer:false});
-          localStorage.setItem(keyMap, stCells.getEncryptMap());
+          localStorage.setItem(`#H_${keyMap}`, stCells.getEncryptMap());
           win.toCloseWin();
           inputVal = '';
         } catch (error) {
