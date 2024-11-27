@@ -59,9 +59,10 @@
   topic={"📝 Шпаргалка"}
   description={`
     Навведись на клетку: \n
-    | ShiftLeft+mouseLeftButton: создать клетку \n
-    | CtrlLeft+mouseLeftButton: удалить клетку \n
-    | AltLeft+mouseLeftButton: удалить все клетки до нужной \n
+    | ShiftLeft+MouseLeftButton: создать клетку \n
+    | CtrlLeft+MouseLeftButton: удалить клетку \n
+    | AltLeft+MouseLeftButton: удалить все клетки до нужной \n
+    | MouseLeft_DoubleClick: при клике на клетку откроется инвентарь 
   `}
   />
 
