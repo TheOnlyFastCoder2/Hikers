@@ -1,8 +1,8 @@
 # Svelte + TypeScript + Vite
 
-#### Сайт: [hikers-bay.vercel.app](https://hikers-bay.vercel.app/)  
-###### Видео: [Смотреть видео](https://disk.yandex.ru/i/AideJuDcLOB5Jg)  
-###### Карта: [Скачать карту](https://disk.yandex.ru/d/o6s72EUwudpdyA)  
+**Сайт**: [hikers-bay.vercel.app](https://hikers-bay.vercel.app/)  
+**Видео**: [Смотреть видео](https://disk.yandex.ru/i/AideJuDcLOB5Jg)  
+**Карта**: [Скачать карту](https://disk.yandex.ru/d/o6s72EUwudpdyA)  
 
 ### Управление в конструкторе:
 ```
