@@ -125,7 +125,7 @@
     <div class="container">
       <div class="container __storeOfMap">
         <h2>Выбери Карты</h2>
-        <StoreOfMap isConstructor={false} cbToLaodMap={start}/>
+        <StoreOfMap isConstructor={false} cbToLoadMap={start}/>
       </div>
       <div class="container __characters">
         <StoreOfCharacters/>

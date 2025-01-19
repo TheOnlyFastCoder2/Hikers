@@ -2,10 +2,10 @@
   import storeCells from "store/stCells";
   import Einity from "utils/game/Enity";
   import { stepBtn } from "utils/game/game.config";
-  import type { CEnity, TDirect, TMode } from "lib/types";
+  import type { CEntity, TDirect, TMode } from "lib/types";
 
   let fill:string = 'green';
-  export let cell:CEnity;
+  export let cell:CEntity;
   export let direct:TDirect|'CENTER';
   export let mode: TMode;
 

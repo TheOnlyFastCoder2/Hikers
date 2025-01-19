@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onDestroy, onMount } from "svelte";
-  import {type CEnity} from "lib/types";
+  import {type CEntity} from "lib/types";
   import Cell from "./Cell/Cell.svelte";
   import stCells from "store/stCells";
   import Scene from "lib/components/Scene.svelte";
@@ -12,7 +12,7 @@
   import Notification from "lib/ul/Notification.svelte";
 
 
-  let cells:CEnity[];
+  let cells:CEntity[];
   let scene:Scene;
   let notification:Notification;
   let cheatSheet:Notification;

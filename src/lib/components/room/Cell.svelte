@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { CEnity } from "lib/types";
+  import type { CEntity } from "lib/types";
 
-  export let cell:CEnity;
+  export let cell:CEntity;
   export let show:'INDEX'|'DIRECTION' = 'INDEX';
   const isVPrev = cell.prevCell?.featureDirection === 'TOP' || cell.prevCell?.featureDirection === 'BOTTOM';
   const isVCurr = cell?.featureDirection === 'TOP' || cell?.featureDirection === 'BOTTOM';

@@ -1,5 +1,5 @@
 import {writable} from 'svelte/store';
-import type { CEnity } from 'lib/types';
+import type { CEntity } from 'lib/types';
 import crypto from 'crypto-js'
 import Einity from 'utils/game/Enity';
 
@@ -7,7 +7,7 @@ import Einity from 'utils/game/Enity';
 const key = 'dcr';
 export type TNameMap = {name:string,isComputer:boolean}|undefined;
 export function stCells() {
-  const {subscribe, update, set} = writable<CEnity[]>([]);
+  const {subscribe, update, set} = writable<CEntity[]>([]);
   const nameMap = writable<TNameMap>();
 
   return {
@@ -36,12 +36,12 @@ export function stCells() {
       this.setNameMap(undefined);
     },
 
-    addChild: (cell:CEnity) => update((store) => {
+    addChild: (cell:CEntity) => update((store) => {
       store.push(cell);
       return store;
     }),
     
-    removeChild: (cell:CEnity) => update((store) => {
+    removeChild: (cell:CEntity) => update((store) => {
       return store.filter((item) => item !== cell);
     }),
     
@@ -62,7 +62,7 @@ export function stCells() {
       return map!;
     },
 
-    getDencryptMap: (str:string) => {
+    getDecryptMap: (str:string) => {
       const decrypt = crypto.AES.decrypt(str, key).toString(crypto.enc.Utf8);
       return JSON.parse(decrypt) as Einity[]
     },
@@ -87,7 +87,7 @@ export function stCells() {
 
     reload: () => update((store) => [...store]), 
 
-    removeAllAfterCell: (cell:CEnity) => {
+    removeAllAfterCell: (cell:CEntity) => {
       update((store) => {
         for(let i = store.length; true; i--) {
           if(cell === store[i]) {

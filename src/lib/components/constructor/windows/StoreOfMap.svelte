@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { CEnity } from "lib/types";
+    import type { CEntity } from "lib/types";
   import DraggableWin from "lib/ul/DraggableWin.svelte";
   import stCells from "store/stCells";
   import { onMount } from "svelte";
@@ -14,7 +14,7 @@
   export let isConstructor:boolean = true;
   export let toCreateNewMap:Function|undefined = undefined;
   export let cbResetCounter: Function|undefined = undefined;
-  export let cbToLaodMap: ((map:CEnity[]) => boolean) | undefined = undefined;
+  export let cbToLoadMap: ((map:CEntity[]) => boolean) | undefined = undefined;
 
   $: console.log(files)
   $: if (files !== null && files.length > 0) {
@@ -25,9 +25,9 @@
     win.toOpenWin();
   }
 
-  function toLaodMap(key:string, value:string, isComputer: boolean = false) {
+  function toLoadMap(key:string, value:string, isComputer: boolean = false) {
     const toLoad = () => {
-      const map = stCells.getDencryptMap(value);
+      const map = stCells.getDecryptMap(value);
       stCells.setNameMap({name:key, isComputer}); 
         stCells.toLoadMap(
           map,
@@ -41,10 +41,10 @@
     }
 
 
-    if(cbToLaodMap === undefined) toLoad(); 
+    if(cbToLoadMap === undefined) toLoad(); 
     else {
-      const map = stCells.getDencryptMap(value);
-      const trigger = cbToLaodMap(map);
+      const map = stCells.getDecryptMap(value);
+      const trigger = cbToLoadMap(map);
 
       if(trigger) toLoad()
       else {
@@ -61,7 +61,7 @@
     reader.onload = (e) => {
       if(e.target?.result) {
         files = null;
-        toLaodMap(name, e.target.result as string, true);
+        toLoadMap(name, e.target.result as string, true);
       }  
     }
 
@@ -114,7 +114,7 @@
               <div class="StoreOfMap_saved_map">
                 <span>{toFormattedMap(key)}</span>
                 <div class="container">
-                    <button on:click={() => toLaodMap(key, value)} class="StoreOfMap_saved_map_btn">открыть</button>
+                    <button on:click={() => toLoadMap(key, value)} class="StoreOfMap_saved_map_btn">открыть</button>
                     <button on:click={() => toRemoveMap(key, index)} class="StoreOfMap_saved_map_btn">удалить</button>
                 </div>
               </div>
@@ -146,7 +146,7 @@
           <div class="StoreOfMap_saved_map">
             <span>{toFormattedMap(key)}</span>
             <div class="container">
-                <button on:click={() => toLaodMap(key, value)} class="StoreOfMap_saved_map_btn">открыть</button>
+                <button on:click={() => toLoadMap(key, value)} class="StoreOfMap_saved_map_btn">открыть</button>
             </div>
           </div>
         {/if}

@@ -1,5 +1,5 @@
 import toReverseDirection from "utils/toReverseDirection";
-import type {CEnity, TDirect, TDirects } from "lib/types";
+import type {CEntity, TDirect, TDirects } from "lib/types";
 import { ERoles, rounded, stepCell, sizeCell  } from "utils/game/game.config";
 
 export default class Einity {
@@ -14,7 +14,7 @@ export default class Einity {
     public readonly step:number = stepCell;
     public readonly rounded: number = rounded;
 
-    constructor(data?:CEnity) {
+    constructor(data?:CEntity) {
       Object.assign(this, data)
     } 
     

@@ -1,5 +1,5 @@
 import {writable} from 'svelte/store';
-import type { CEnity, CUser, TUserAction } from 'lib/types';
+import type { CEntity, CUser, TUserAction } from 'lib/types';
 
 export function stUsers() {
   const {subscribe, update, set} = writable<CUser[]>([]);
@@ -16,7 +16,7 @@ export function stUsers() {
       });
       return users!;
     },
-    reloadPosition: (map:CEnity[]) => {
+    reloadPosition: (map:CEntity[]) => {
       update((users) => {
         users.forEach((user) => {
           const cell = map[user.indCell];
@@ -69,7 +69,7 @@ export function stUsers() {
     },
 
     toDoStep: function (
-      map:CEnity[], user:CUser, qntySteps: number, userActions:TUserAction,
+      map:CEntity[], user:CUser, qntySteps: number, userActions:TUserAction,
       cbListenerMove: (user:CUser) => void, 
       cbResetActiveUser: Function , 
       speed:number = 500

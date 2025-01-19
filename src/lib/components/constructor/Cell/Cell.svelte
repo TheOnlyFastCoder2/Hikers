@@ -1,9 +1,9 @@
 <script lang="ts">
   import stCell from "store/stCell";
   import BtnDirection from "./BTNDirection.svelte";
-  import type { CEnity, TMode } from "lib/types";
+  import type { CEntity, TMode } from "lib/types";
 
-  export let cell:CEnity;
+  export let cell:CEntity;
   export let cbToOpenStoreRoles:Function;
 
   let mode:TMode|'NONE' = 'ADD';

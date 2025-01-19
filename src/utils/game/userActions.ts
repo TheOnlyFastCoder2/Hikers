@@ -1,4 +1,4 @@
-import type { CEnity, CUser, TCBAction, TUserDataAction } from "lib/types";
+import type { CEntity, CUser, TCBAction, TUserDataAction } from "lib/types";
 import { DataOfRoles, ERoles } from "./game.config";
 import stUsers from "store/user/stUsers";
 import playAudio from "utils/PlayerAudio";
@@ -45,7 +45,7 @@ const cb = (user:CUser, action: ERoles, typeQnty:'qntyBuffs'|'qntyInventory') =>
 }
 
 
-export type TProps = {user:CUser, cell?:CEnity, step?:number, map?:CEnity[]};
+export type TProps = {user:CUser, cell?:CEntity, step?:number, map?:CEntity[]};
 
 export const cbUserActions:Record<ERoles, (props:TProps) => void|TCBAction > = {
 
@@ -237,7 +237,7 @@ export const cbUserActions:Record<ERoles, (props:TProps) => void|TCBAction > = {
 }
 
 const tabooRoles = [ERoles.MONEY, ERoles.POISON, ERoles.POTION, ERoles.PORTAL, ERoles.HANDCUFFS, ERoles.BOMB, ERoles.NEXT ];
-export default (user: CUser, cell:CEnity, currStep:number, timeID: NodeJS.Timeout, map:CEnity[]) => {  
+export default (user: CUser, cell:CEntity, currStep:number, timeID: NodeJS.Timeout, map:CEntity[]) => {  
   if(cell.role && cell.role in cbUserActions && currStep === 0) {
 
     const s = user.actions.HANDCUFFS?.cb!();

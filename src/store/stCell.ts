@@ -1,9 +1,9 @@
 import {writable} from 'svelte/store';
 import type Einity from 'utils/game/Enity';
-import type { CEnity } from 'lib/types';
+import type { CEntity } from 'lib/types';
 
 export function stCell() {
-  const {subscribe, set} = writable<CEnity>();
+  const {subscribe, set} = writable<CEntity>();
 
     return {
       subscribe,

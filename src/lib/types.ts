@@ -2,13 +2,13 @@ import type User from "utils/game/User";
 import Einity from "../utils/game/Enity";
 
 export type CUser = User;
-export type CEnity = Einity;
+export type CEntity = Einity;
 export type TMode = 'ADD'|'REMOVE';
 export type TPage = 'START'|'CONSTRUCTOR'|'ROOM_OFFLINE'|'ROOM_ONLINE';
 export type TDirects = ['RIGHT'?,'LEFT'?,'TOP'?,'BOTTOM'?];
 export type TDirect = 'RIGHT'|'LEFT'|'BOTTOM'|'TOP';
 
-export type TUserAction = (user:CUser, cell:CEnity, currStep:number, timeID: NodeJS.Timeout, map:CEnity[]) => void;
+export type TUserAction = (user:CUser, cell:CEntity, currStep:number, timeID: NodeJS.Timeout, map:CEntity[]) => void;
 export type TCBAction = (apponent?: CUser, cbDamageEffect?:Function) => void|boolean;
 export type TUserDataAction = {cb?:TCBAction, status:boolean, qntyBuffs: number, qntyInventory:number, isShow:boolean, apponents:Function[]};
 
