@@ -1,6 +1,9 @@
 # Svelte + TypeScript + Vite
 #### website: https://hikers-bay.vercel.app/
-###### video: https://disk.yandex.ru/i/AideJuDcLOB5Jg
+###### video: 
+- Yandex: [Ссылка](https://disk.yandex.ru/i/AideJuDcLOB5Jg)
+- Google: [Ссылка](https://drive.google.com/file/d/1dtvia9FmMCbD1kVNiKGhhoNly3w4hElt/view?usp=sharing)
+
 ###### map: https://disk.yandex.ru/d/o6s72EUwudpdyA
 ```
 В конструкторе навведись на клетку: 
